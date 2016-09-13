@@ -1,0 +1,55 @@
+# POST rules
+{	"name": "Tap 1.2 Button On",
+	"conditions": [
+		{
+			"address": "/sensors/1/state/buttonevent",
+			"operator": "eq",
+			"value": "16"
+		},
+		{
+			"address": "/sensors/1/state/lastupdated",
+			"operator": "dx"
+		},
+		{
+			"address": "/lights/1/state/on",
+			"operator": "eq",
+			"value": "false"
+		}
+	],
+	"actions": [
+		{
+			"address": "/lights/1/state",
+			"method": "PUT",
+			"body": {
+				"on": true
+	         }
+		}	]
+}
+
+# POST rules
+{	"name": "Tap 1.2 Button Off",
+	"conditions": [
+		{
+			"address": "/sensors/1/state/buttonevent",
+			"operator": "eq",
+			"value": "16"
+		},
+		{
+			"address": "/sensors/1/state/lastupdated",
+			"operator": "dx"
+		},
+		{
+			"address": "/lights/1/state/on",
+			"operator": "eq",
+			"value": "true"
+		}
+	],
+	"actions": [
+		{
+			"address": "/lights/1/state",
+			"method": "PUT",
+			"body": {
+				"on": false
+	         }
+		}	]
+}
